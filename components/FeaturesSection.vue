@@ -1,16 +1,14 @@
 <template>
-  <section class="py-20 bg-black">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <!-- Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <AccueilCardFeatureCard
-          v-for="feature in features"
-          :key="feature.id"
-          :title="feature.title"
-          :description="feature.description"
-          :videoUrl="feature.videoUrl"
-        />
-      </div>
+  <section class="min-h-screen bg-black flex items-center justify-center">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full h-full px-8">
+      <AccueilCardFeatureCard
+        v-for="feature in features"
+        :key="feature.id"
+        :title="feature.title"
+        :description="feature.description"
+        :mediaUrl="feature.videoUrl"
+        mediaType="video"
+      />
     </div>
   </section>
 </template>
@@ -46,9 +44,3 @@ const features = ref<Feature[]>([
   }
 ]);
 </script>
-
-<style scoped>
-.container {
-  perspective: 1000px;
-}
-</style>
