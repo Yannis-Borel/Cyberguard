@@ -1,10 +1,10 @@
-// Index.vue
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import BeginHome from '@/components/BeginHome.vue';
 import FeaturesSection from '@/components/FeaturesSection.vue';
+import ParticlesBackground from '@/components/ParticlesBackground.vue'; // Import du composant
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -72,23 +72,21 @@ onMounted(() => {
   // Pause pour s'assurer que BeginHome est complètement terminé
   mainTimeline.to({}, { duration: 0.2 }); // Pause de transition
 
+  // Animation d'apparition de ParticlesBackground
+  mainTimeline.fromTo('.particles-background',
+    {
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+      duration: 1,
+      ease: 'power2.out',
+    },
+    0.5 // Début de l'animation après la fin de BeginHome
+  );
+
   // Timeline pour Features
   const featuresTimeline = gsap.timeline();
-
-  // Animation du titre des features (commence après BeginHome)
-  featuresTimeline.fromTo('.features-title', 
-    {
-      y: 100,
-      opacity: 0
-    },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 0.4,
-      ease: 'power2.out'
-    },
-    0
-  );
 
   // Animation des cartes
   const cards = gsap.utils.toArray('.feature-card');
@@ -121,15 +119,10 @@ onMounted(() => {
     <div class="home-section absolute top-0 left-0 w-full h-screen">
       <BeginHome />
     </div>
-
     <!-- Section Features -->
     <div class="features-wrapper absolute top-0 left-0 w-full min-h-screen">
       <div class="features-section relative bg-black min-h-screen">
-        <div class="sticky top-0 pt-16 pb-16">
-          <h2 class="features-title text-4xl md:text-5xl text-white text-center font-semibold opacity-0">
-            Our Features
-          </h2>
-        </div>
+        <div class="sticky top-0 pt-16 pb-16"></div>
         <FeaturesSection />
       </div>
     </div>
@@ -148,16 +141,22 @@ onMounted(() => {
   will-change: transform;
 }
 
-.features-wrapper {
+.particles-background {
   position: absolute;
   z-index: 2;
+  will-change: transform;
+}
+
+.features-wrapper {
+  position: absolute;
+  z-index: 3;
   visibility: hidden;
   will-change: transform;
 }
 
 .features-section {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .features-title,

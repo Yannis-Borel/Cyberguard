@@ -27,10 +27,10 @@
           Stake
         </NuxtLink>
         <NuxtLink 
-          to="/blendr"
+          to="/connexion"
           class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full transition-colors"
         >
-          $BLENDR
+          Se connecter
         </NuxtLink>
       </div>
 

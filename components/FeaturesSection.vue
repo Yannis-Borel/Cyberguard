@@ -1,6 +1,8 @@
 <template>
-  <section class="min-h-screen bg-black py-20">
-    <div class="features-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mx-auto px-4">
+  <section class="min-h-screen bg-black py-20 relative">
+    <ParticlesBackground />
+    
+    <div class="features-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mx-auto px-4 relative z-10">
       <AccueilCardFeatureCard
         v-for="feature in features"
         :key="feature.id"
@@ -18,6 +20,7 @@
 import { ref, onMounted } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ParticlesBackground from '~/components/ParticlesBackground.vue';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,4 +83,3 @@ onMounted(() => {
   opacity: 1;
 }
 </style>
-
