@@ -9,12 +9,10 @@
       <!-- Menu Desktop -->
       <div class="hidden lg:flex items-center space-x-8">
         <NuxtLink 
-          v-for="item in menuItems" 
-          :key="item.path"
-          :to="item.path"
-          class="text-white hover:text-blue-400 transition-colors"
+          to="/test"
+          class="text-white/80 hover:text-white transition-colors"
         >
-          {{ item.label }}
+          test
         </NuxtLink>
       </div>
 

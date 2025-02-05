@@ -1,21 +1,22 @@
 <template>
-  <section class="min-h-screen bg-black py-20 relative">
+  <section class="min-h-screen bg-black py-10 relative flex items-center justify-center">
     <ParticlesBackground />
     
-    <div class="features-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mx-auto px-4 relative z-10">
-      <AccueilCardFeatureCard
-        v-for="feature in features"
-        :key="feature.id"
-        :title="feature.title"
-        :description="feature.description"
-        :mediaUrl="feature.videoUrl"
-        mediaType="video"
-        class="feature-card"
-      />
+    <div class="container mx-auto px-6 relative z-10 w-[95%]">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto">
+        <AccueilCardFeatureCard
+          v-for="feature in features"
+          :key="feature.id"
+          :title="feature.title"
+          :description="feature.description"
+          :mediaUrl="feature.videoUrl"
+          mediaType="video"
+          class="feature-card"
+        />
+      </div>
     </div>
   </section>
 </template>
-
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { gsap } from 'gsap';

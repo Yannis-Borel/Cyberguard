@@ -2,9 +2,9 @@
 // FeatureCard.vue
 <template>
   <div 
-    class="feature-card group relative overflow-hidden rounded-xl bg-zinc-900/90 hover:bg-zinc-800/90 transition-all duration-500 cursor-pointer flex flex-col items-center justify-between p-4"
+    class="feature-card group relative overflow-hidden rounded-xl bg-[#070B11] hover:bg-[#070B11] transition-all duration-500 cursor-pointer flex flex-col items-center justify-between p-6 h-[500px]"
   >
-    <div class="flex-grow w-full h-80 mb-4 relative overflow-hidden">
+    <div class="flex-grow w-full h-[300px] mb-4 relative overflow-hidden">
       <video 
         v-if="mediaType === 'video'"
         autoplay
@@ -17,7 +17,7 @@
       </video>
     </div>
     
-    <div class="text-center space-y-4">
+    <div class="text-center space-y-4 w-full">
       <h3 class="text-2xl font-medium text-white group-hover:text-purple-400 transition-colors duration-300">
         {{ title }}
       </h3>
