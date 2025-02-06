@@ -1,5 +1,5 @@
 <template>
- <section class="adn-section relative h-screen w-full overflow-hidden bg-black">
+    <section class="relative h-screen w-full overflow-hidden bg-black">
       <!-- Vidéo à gauche, occupant une plus grande largeur -->
       <video 
         autoplay 
