@@ -1,26 +1,26 @@
-
 <template>
   <section class="relative h-screen w-full overflow-hidden bg-black">
-    <!-- Vidéo avec chemin corrigé -->
+    <!-- Vidéo avec ajustements optimisés pour toutes les tailles d'écran -->
     <video 
       autoplay 
       loop 
       muted 
       playsinline
       class="video-background absolute top-0 object-cover h-full
-             sm:-right-[10%] sm:w-[110%]
-             md:-right-[15%] md:w-[115%]
-             lg:-right-[20%] lg:w-[120%]
-             xl:-right-[20%] xl:w-[120%]
-             2xl:-right-[25%] 2xl:w-[125%]"
+             sm:-right-[-5%] sm:w-[10%]   <!-- Augmenté pour sm -->
+             md:-right-[-10%] md:w-[85%]   <!-- Augmenté pour md -->
+             lg:-right-[5%] lg:w-[85%]   <!-- Augmenté pour lg -->
+             xl:-right-[5%] xl:w-[85%]   <!-- Augmenté pour xl -->
+             2xl:-right-[-5%] 2xl:w-[80%] <!-- Référence 2xl inchangée -->
+      "
     >
       <source :src="videoUrl" type="video/mp4" />
     </video>
 
-    <!-- Dégradé inchangé -->
+    <!-- Dégradé optimisé -->
     <div class="gradient-overlay absolute inset-y-0 left-0
                 sm:block
-                sm:w-[85%] md:w-[80%] lg:w-[75%] xl:w-[75%]" 
+                sm:w-[90%] md:w-[90%] lg:w-[85%] xl:w-[85%] 2xl:w-[85%]" 
          style="
            background: linear-gradient(90deg, 
              rgba(0, 0, 0, 1) 0%,
@@ -48,15 +48,16 @@
     <!-- Contenu -->
     <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12">
       <div class="max-w-xs sm:max-w-sm text-center sm:text-left mx-auto sm:mx-0 xl:ml-8">
-        <h1 class="home-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-4 sm:mb-6">
+        <h1 ref="title" class="home-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-4 sm:mb-6">
           CYBERGUARD
         </h1>
-        <p class="home-description text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8">
+        <p ref="description" class="home-description text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8">
           Secure, scalable access to computing resources
           via blockchain for research and development.
         </p>
         <div>
           <NuxtLink
+            ref="button"
             class="home-button inline-flex items-center px-6 py-2 sm:px-8 sm:py-3 
                    bg-white/10 hover:bg-white/20 text-white 
                    rounded-full backdrop-blur-sm transition-colors
@@ -70,10 +71,11 @@
     </div>
   </section>
 </template>
+
 <script setup>
 import { onMounted, ref } from 'vue';
 import { gsap } from 'gsap';
-import videoUrl from '/video/Video_accueil.mp4';
+import videoUrl from '/video/Video_violet.mp4';
 
 // Références pour les éléments à animer
 const title = ref(null);

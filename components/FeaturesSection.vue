@@ -9,14 +9,15 @@
           :key="feature.id"
           :title="feature.title"
           :description="feature.description"
-          :mediaUrl="feature.videoUrl"
-          mediaType="video"
+          :mediaUrl="feature.mediaUrl"
+          mediaType="gif" 
           class="feature-card"
         />
       </div>
     </div>
   </section>
 </template>
+
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { gsap } from 'gsap';
@@ -29,8 +30,9 @@ interface Feature {
   id: number;
   title: string;
   description: string;
-  videoUrl: string;
-  mediaType: 'video';
+  mediaUrl: string;
+  mediaType: 'gif';
+  customClass?: string; // Ajout d'une propriété pour une classe personnalisée
 }
 
 const features = ref<Feature[]>([
@@ -38,22 +40,23 @@ const features = ref<Feature[]>([
     id: 1,
     title: "Navigating Risks",
     description: "Understand and mitigate potential risks in your blockchain operations with our advanced security measures.",
-    videoUrl: "/video/Video_accueil.mp4",
-    mediaType: 'video'
+    mediaUrl: "/3d/gif_3D_1.gif",
+    mediaType: 'gif'
   },
   {
     id: 2,
     title: "What is High-Frequency Trading?",
     description: "Explore the world of high-frequency trading and how our platform can help you succeed.",
-    videoUrl: "/video/Video_accueil.mp4",
-    mediaType: 'video'
+    mediaUrl: "/3d/gif_3D_2.gif",
+    mediaType: 'gif'
   },
   {
     id: 3,
     title: "Profit with Prudence",
     description: "Learn how to maximize your returns while maintaining a prudent approach to blockchain trading.",
-    videoUrl: "/video/Video_accueil.mp4",
-    mediaType: 'video'
+    mediaUrl: "/3d/gif_3D_3.gif",
+    mediaType: 'gif',
+    customClass: 'zoom-gif' // Classe personnalisée pour le zoom
   }
 ]);
 
@@ -82,5 +85,11 @@ onMounted(() => {
 .feature-card {
   transform: translateY(0);
   opacity: 1;
+}
+
+/* Zoom sur le troisième GIF */
+.zoom-gif {
+  transform: scale(1.1); /* Ajustez la valeur pour plus ou moins de zoom */
+  transform-origin: center; /* Centre le zoom */
 }
 </style>

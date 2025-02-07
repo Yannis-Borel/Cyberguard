@@ -1,20 +1,15 @@
-
-// FeatureCard.vue
 <template>
   <div 
     class="feature-card group relative overflow-hidden rounded-xl bg-[#070B11] hover:bg-[#070B11] transition-all duration-500 cursor-pointer flex flex-col items-center justify-between p-6 h-[500px]"
   >
     <div class="flex-grow w-full h-[300px] mb-4 relative overflow-hidden">
-      <video 
-        v-if="mediaType === 'video'"
-        autoplay
-        loop
-        muted
-        playsinline
-        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-      >
-        <source :src="mediaUrl" type="video/mp4" />
-      </video>
+      <!-- Afficher un GIF si mediaType est 'gif' -->
+      <img 
+        v-if="mediaType === 'gif'"
+        :src="mediaUrl"
+        alt="Feature GIF"
+        :class="['w-full h-full object-cover transition-transform duration-700 group-hover:scale-105', customClass]"
+      />
     </div>
     
     <div class="text-center space-y-4 w-full">
@@ -33,7 +28,8 @@ interface Props {
   title: string;
   description: string;
   mediaUrl: string;
-  mediaType: 'video' | 'spline';
+  mediaType: 'gif';
+  customClass?: string; // Ajout de la prop customClass
 }
 
 defineProps<Props>();

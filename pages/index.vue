@@ -31,7 +31,7 @@ onMounted(() => {
 
   const homeTimeline = gsap.timeline();
   homeTimeline
-    .to('.video-background', { scale: 1.1, opacity: 0, filter: 'blur(20px)', duration: 0.5, ease: 'power2.inOut' }, 0)
+    .to('.video-background', { scale: 1.1, opacity: 0, filter: 'blur(0px)', duration: 0.5, ease: 'power2.inOut' }, 0)
     .to('.gradient-overlay', { opacity: 0, duration: 0.5, ease: 'power2.inOut' }, 0)
     .to('.home-title', { y: -50, opacity: 0, duration: 0.4, ease: 'power2.inOut' }, 0.1)
     .to('.home-description', { y: -30, opacity: 0, duration: 0.4, ease: 'power2.inOut' }, 0.2)

@@ -9,7 +9,7 @@
         class="video-background absolute top-0 left-0 object-cover h-full
                w-full sm:w-[75%] md:w-[80%] lg:w-[65%] xl:w-[70%]"
       >
-        <source src="/video/video_adn.mp4" type="video/mp4" />
+        <source src="/video/video_adn2.mp4" type="video/mp4" />
       </video>
   
       <!-- Dégradé étendu vers la gauche pour une meilleure transition -->
