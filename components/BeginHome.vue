@@ -62,9 +62,9 @@
                    bg-white/10 hover:bg-white/20 text-white 
                    rounded-full backdrop-blur-sm transition-colors
                    text-sm sm:text-base"
-            to="/documentation"
+            to="/test"
           >
-            Documentation
+            CyberGuard AI
           </NuxtLink>
         </div>
       </div>

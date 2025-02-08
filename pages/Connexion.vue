@@ -1,3 +1,5 @@
+<!-- Connexion.vue -->
+
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useNuxtApp, useRouter } from '#app';
@@ -47,7 +49,7 @@ const signIn = async () => {
   try {
     const { data, error } = await $supabase.auth.signInWithPassword({ email, password });
     if (error) throw error;
-    router.push('/monprofil');
+    router.push('/');
   } catch (err) {
     console.error('Erreur:', err);
   }

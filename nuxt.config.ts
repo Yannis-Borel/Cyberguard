@@ -9,8 +9,8 @@ export default defineNuxtConfig({
   // Plugins
   plugins: [
     "~/plugins/supabase.ts",
-    "~/plugins/ollama.ts"  // Ajout du plugin Ollama
-  ], 
+    "~/plugins/ollama.ts" // Ajout du plugin Ollama
+ ], 
 
   // Gestion des variables d'environnement
   runtimeConfig: {
@@ -24,4 +24,6 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()], 
   },
+
+  
 });
