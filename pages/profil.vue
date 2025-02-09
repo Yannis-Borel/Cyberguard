@@ -2,7 +2,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useAuth } from '~/composables/useAuth'
-
+definePageMeta({
+  keepalive: false,
+  key: route => route.fullPath
+});
 const { user, updateProfile, signOut } = useAuth()
 const isEditing = ref(false)
 const editForm = ref({

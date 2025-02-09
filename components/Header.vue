@@ -23,8 +23,8 @@ const menuItems = [
 
       <!-- Menu Desktop -->
       <div class="hidden lg:flex items-center space-x-8">
-        <NuxtLink to="/test" class="text-white/80 hover:text-white transition-colors">
-          test
+        <NuxtLink to="/CyberGuardAI" class="text-white/80 hover:text-white transition-colors">
+          CyberGuard AI
         </NuxtLink>
       </div>
 

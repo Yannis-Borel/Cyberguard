@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+// Pour chaque page où vous voulez un rafraîchissement
 
 onMounted(() => {
   ScrollTrigger.getAll().forEach(st => st.kill());

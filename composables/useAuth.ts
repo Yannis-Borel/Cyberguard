@@ -10,24 +10,35 @@ export const useAuth = () => {
   const loading = ref(true)
 
   const fetchUser = async () => {
-    const { data: { user: authUser } } = await $supabase.auth.getUser()
-    
-    if (authUser) {
-      const { data } = await $supabase
-        .from('users')
-        .select('*')
-        .eq('id', authUser.id)
-        .single()
+    try {
+      const { data: { session } } = await $supabase.auth.getSession()
       
-      user.value = data
+      if (session?.user) {
+        const { data } = await $supabase
+          .from('users')
+          .select('*')
+          .eq('id', session.user.id)
+          .single()
+        
+        if (data) {
+          user.value = data
+        }
+      }
+    } catch (error) {
+      console.error('Erreur lors de la récupération de l\'utilisateur:', error)
+    } finally {
+      loading.value = false
     }
-    loading.value = false
   }
 
   const signOut = async () => {
-    await $supabase.auth.signOut()
-    user.value = null
-    router.push('/connexion')
+    try {
+      await $supabase.auth.signOut()
+      user.value = null
+      router.push('/connexion')
+    } catch (error) {
+      console.error('Erreur lors de la déconnexion:', error)
+    }
   }
 
   const updateProfile = async (updates: Partial<User>) => {
@@ -46,15 +57,22 @@ export const useAuth = () => {
     return { data, error }
   }
 
+  // Écoute les changements d'état d'authentification
   onMounted(() => {
     fetchUser()
     
-    $supabase.auth.onAuthStateChange((event, session) => {
-      if (event === 'SIGNED_IN') {
-        fetchUser()
+    const { data: { subscription } } = $supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+        await fetchUser()
       } else if (event === 'SIGNED_OUT') {
         user.value = null
+        router.push('/connexion')
       }
+    })
+
+    // Nettoie l'abonnement quand le composant est démonté
+    onUnmounted(() => {
+      subscription.unsubscribe()
     })
   })
 
@@ -62,6 +80,7 @@ export const useAuth = () => {
     user,
     loading,
     signOut,
-    updateProfile
+    updateProfile,
+    fetchUser
   }
 }
