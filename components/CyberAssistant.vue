@@ -80,20 +80,61 @@ const currentMessages = computed<Message[]>(() => {
 const loadConversation = (id: string) => {
   currentConversation.value = id
 }
+
 const startNewConversation = () => {
   currentConversation.value = null
 }
 
+const motsCleCyberSecurite = [
+  'mot de passe', 'sécurité', 'hack', 'piratage', 'cryptage',
+  'chiffrement', 'pare-feu', 'protection', 'authentification',
+  'confidentialité', 'réseau', 'vulnérabilité', 'attaque', 'phishing',
+  'virus', 'malware', 'ransomware', 'données', 'cybercriminalité',
+  'backdoor', 'ddos', 'firewall', 'proxy', 'vpn', 'certificat',
+  'surveillance', 'espionnage', 'intrusion', 'antivirus'
+]
+
+const formatResponse = (response: string): string => {
+  // Limiter la longueur des réponses
+  const maxLength = 1000
+  if (response.length > maxLength) {
+    response = response.substring(0, maxLength) + '...'
+  }
+  
+  // Ajouter des sauts de ligne pour plus de lisibilité
+  response = response.replace(/\. /g, '.\n')
+  
+  return response
+}
+
 const isCyberSecurityTopic = async (question: string): Promise<boolean> => {
   try {
-    const response = await $ollama.generateResponse(
-      `Analyse si la question est liée à la cybersécurité. Réponds UNIQUEMENT par "OUI" ou "NON" en français : ${question}`
-    )
+    const prompt = `En tant qu'expert en cybersécurité, analyse si cette question concerne la cybersécurité. 
+    Réponds uniquement par OUI ou NON : "${question}"`
+    
+    const response = await $ollama.generateResponse(prompt)
     return response.trim().toUpperCase() === 'OUI'
   } catch (error) {
-    console.error('Erreur de détection', error)
+    console.error('Erreur de détection du sujet:', error)
     return false
   }
+}
+
+const generateAIResponse = async (question: string): Promise<string> => {
+  const contextPrompt = `Tu es un expert français en cybersécurité. 
+  Réponds de manière claire, concise et technique à cette question: "${question}"
+  
+  Directives:
+  - Réponse uniquement en français
+  - Maximum 3-4 phrases par réponse
+  - Pas de longues introductions
+  - Aller droit au but
+  - Utiliser un vocabulaire technique approprié
+  - Éviter les répétitions et le remplissage
+  - Ne pas mentionner que tu es une IA`
+
+  const response = await $ollama.generateResponse(contextPrompt)
+  return formatResponse(response)
 }
 
 const sendMessage = async () => {
@@ -102,59 +143,39 @@ const sendMessage = async () => {
 
   try {
     if (!currentConversation.value) {
-      // Create new conversation
       const newConv = await createConversation(userInput.value)
       if (!newConv) {
-        throw new Error('Failed to create conversation')
+        throw new Error('Échec de la création de la conversation')
       }
       currentConversation.value = newConv.id
-    } else {
-      // Add message to existing conversation
-      await addMessage(currentConversation.value, userInput.value, 'user')
     }
 
-    const keywordsCyberSecurity = [
-      'mot de passe', 'sécurité', 'hack', 'piratage', 'cryptage',
-      'chiffrement', 'pare-feu', 'protection', 'authentification',
-      'confidentialité', 'réseau', 'vulnérabilité', 'attaque', 'phishing'
-    ]
+    await addMessage(currentConversation.value, userInput.value, 'user')
 
-    const containsCyberSecurityKeywords = keywordsCyberSecurity.some(
-      keyword => userInput.value.toLowerCase().includes(keyword)
+    const containsKeywords = motsCleCyberSecurite.some(
+      mot => userInput.value.toLowerCase().includes(mot.toLowerCase())
     )
 
-    let isCyberSecurity = containsCyberSecurityKeywords
-    if (!isCyberSecurity) {
-      isCyberSecurity = await isCyberSecurityTopic(userInput.value)
-    }
+    const isCyberSecurity = containsKeywords || await isCyberSecurityTopic(userInput.value)
 
     if (!isCyberSecurity) {
-      if (currentConversation.value) {
-        await addMessage(
-          currentConversation.value,
-          'Je ne peux répondre qu\'aux questions concernant la cybersécurité.',
-          'assistant'
-        )
-      }
-    } else {
-      const aiResponse = await $ollama.generateResponse(
-        `Réponds UNIQUEMENT en français et de manière technique à cette question de cybersécurité : ${userInput.value}`
+      await addMessage(
+        currentConversation.value,
+        'Je ne peux répondre quaux questions de cybersécurité. Reformulez votre question en lien avec la sécurité informatique.',
+        'assistant'
       )
-
-      if (aiResponse && currentConversation.value) {
-        await addMessage(currentConversation.value, aiResponse, 'assistant')
-      }
+    } else {
+      const aiResponse = await generateAIResponse(userInput.value)
+      await addMessage(currentConversation.value, aiResponse, 'assistant')
     }
 
   } catch (error) {
-    console.error('Error:', error)
-    if (currentConversation.value) {
-      await addMessage(
-        currentConversation.value,
-        'Un problème technique est survenu.',
-        'assistant'
-      )
-    }
+    console.error('Erreur:', error)
+    await addMessage(
+      currentConversation.value,
+      'Une erreur technique est survenue. Veuillez réessayer.',
+      'assistant'
+    )
   } finally {
     isLoading.value = false
     userInput.value = ''

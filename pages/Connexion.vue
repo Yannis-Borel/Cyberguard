@@ -1,3 +1,6 @@
+<!-- Connexion.vue -->
+
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from '#app';
@@ -23,7 +26,6 @@ const signUpForm = ref({
   password: ''
 });
 
-// Gestion de la connexion
 const signIn = async () => {
   try {
     const { error } = await $supabase.auth.signInWithPassword({
@@ -36,8 +38,8 @@ const signIn = async () => {
       return;
     }
 
-    // Redirection vers /cyberguardAI si la connexion réussit
-    router.push('/cyberguardAI');
+    // Utilisez await avec navigateTo
+    await navigateTo('/cyberguardAI', { replace: true });
 
   } catch (err) {
     errorMessage.value = 'Une erreur est survenue lors de la connexion.';

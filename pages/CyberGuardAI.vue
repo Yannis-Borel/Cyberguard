@@ -11,10 +11,7 @@
 // Pour chaque page où vous voulez un rafraîchissement
 definePageMeta({
   keepalive: false,
-  key: route => route.fullPath
-});
-
-definePageMeta({
+  key: route => route.fullPath,
   middleware: ['auth']
 });
 </script>

@@ -25,5 +25,13 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()], 
   },
 
-  
+    router: {
+      options: {
+        strict: true
+      }
+    },
+    experimental: {
+      payloadExtraction: false
+    }
+
 });
