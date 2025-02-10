@@ -13,7 +13,7 @@
              xl:-right-5 xl:w-[85%] 
              2xl:-right-5 2xl:w-[80%]"
     >
-      <source :src="videoUrl" type="video/mp4" />
+      <source src="/video/Video_violet.mp4" type="video/mp4" />
     </video>
 
     <!-- Dégradé optimisé -->
@@ -74,7 +74,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { gsap } from 'gsap';
-import videoUrl from '/video/Video_violet.mp4';
 
 // Références pour les éléments à animer
 const title = ref(null);
