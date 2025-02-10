@@ -12,29 +12,33 @@ export const useChat = () => {
   const currentConversation = ref<string | null>(null)
   const isLoadingConversations = ref(false)
   
-
   const fetchConversations = async () => {
-    if (!user.value) return
-    
-    isLoadingConversations.value = true
-    const { data, error } = await $supabase
-      .from('conversations')
-      .select('*, messages!messages_conversation_id_fkey(*)') // Utilisation de l'alias correct
-      .eq('user_id', user.value.id)
-      .order('created_at', { ascending: false })
-    
-    if (!error && data) {
-      // Trier les messages de chaque conversation
-      conversations.value = data.map(conv => ({
-        ...conv,
-        messages: conv.messages?.sort((a, b) => 
-          new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
-        ) || []
-      }))
-    } else {
-      console.error('Error fetching conversations:', error)
+    try {
+      const { data: { session } } = await $supabase.auth.getSession()
+      if (!session?.user) return
+      
+      isLoadingConversations.value = true
+      const { data, error } = await $supabase
+        .from('conversations')
+        .select('*, messages!messages_conversation_id_fkey(*)')
+        .eq('user_id', session.user.id)
+        .order('created_at', { ascending: false })
+      
+      if (!error && data) {
+        conversations.value = data.map(conv => ({
+          ...conv,
+          messages: conv.messages?.sort((a, b) => 
+            new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+          ) || []
+        }))
+      } else {
+        console.error('Error fetching conversations:', error)
+      }
+    } catch (error) {
+      console.error('Error in fetchConversations:', error)
+    } finally {
+      isLoadingConversations.value = false
     }
-    isLoadingConversations.value = false
   }
   const createConversation = async (firstMessage: string): Promise<Conversation | null> => {
     if (!user.value) return null

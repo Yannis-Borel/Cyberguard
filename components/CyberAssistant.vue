@@ -1,4 +1,8 @@
+<!-- CyberAssistant.vue -->
+
+
 <template>
+  
   <div class="flex h-screen overflow-hidden bg-[#0F1117] pt-16">
     <!-- Sidebar with overlay for mobile -->
     <div class="fixed inset-0 bg-black/50 z-30 md:hidden transition-opacity" 
@@ -182,7 +186,18 @@ const {
 const userInput = ref('')
 const isLoading = ref(false)
 const isSidebarOpen = ref(window?.innerWidth >= 768)
+import { watch } from 'vue'
 
+// Dans le setup script
+const { $supabase } = useNuxtApp()
+
+watch(
+  () => $supabase.auth.getSession(),
+  async () => {
+    await fetchConversations()
+  },
+  { immediate: true }
+)
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value
 }
@@ -393,8 +408,18 @@ const sendMessage = async () => {
   }
 }
 
-onMounted(() => {
-  fetchConversations()
+onMounted(async () => {
+  try {
+    const { data: { session } } = await $supabase.auth.getSession()
+    if (session?.user) {
+      await fetchConversations()
+    } else {
+      // Rediriger vers la page de connexion si nécessaire
+      navigateTo('/connexion')
+    }
+  } catch (error) {
+    console.error("Erreur lors du chargement initial des conversations:", error)
+  }
   
   // Gestion du responsive
   window.addEventListener('resize', () => {
