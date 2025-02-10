@@ -35,6 +35,16 @@ export default defineNuxtConfig({
     },
   },
 
+  nitro: {
+    publicAssets: [
+      {
+        dir: 'public',
+        baseURL: '/',
+      },
+    ],
+  },
+
+
   router: {
     options: {
       strict: true,
