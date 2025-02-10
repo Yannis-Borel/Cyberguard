@@ -370,21 +370,24 @@ const generateAIResponse = async (question: string): Promise<string> => {
 
 const sendMessage = async () => {
   if (!userInput.value.trim()) return
+  const messageContent = userInput.value.trim() // Store message content
+  userInput.value = '' // Clear input immediately
   isLoading.value = true
 
   try {
     if (!currentConversation.value) {
-      const newConv = await createConversation(userInput.value)
+      const newConv = await createConversation(messageContent)
       if (!newConv) {
         throw new Error('Échec de la création de la conversation')
       }
       currentConversation.value = newConv.id
+      // Remove this line as createConversation already adds the first message:
+      // await addMessage(currentConversation.value, messageContent, 'user')
+    } else {
+      await addMessage(currentConversation.value, messageContent, 'user')
     }
 
-    await addMessage(currentConversation.value, userInput.value, 'user')
-
-    // Utilisation directe de la nouvelle fonction de détection
-    const isCyberSecurity = await isCyberSecurityTopic(userInput.value)
+    const isCyberSecurity = await isCyberSecurityTopic(messageContent)
 
     if (!isCyberSecurity) {
       await addMessage(
@@ -393,7 +396,7 @@ const sendMessage = async () => {
         'assistant'
       )
     } else {
-      const aiResponse = await generateAIResponse(userInput.value)
+      const aiResponse = await generateAIResponse(messageContent)
       await addMessage(currentConversation.value, aiResponse, 'assistant')
     }
 
@@ -406,7 +409,6 @@ const sendMessage = async () => {
     )
   } finally {
     isLoading.value = false
-    userInput.value = ''
     await fetchConversations()
   }
 }
