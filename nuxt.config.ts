@@ -9,8 +9,8 @@ export default defineNuxtConfig({
   // Plugins
   plugins: [
     "~/plugins/supabase.ts",
-    "~/plugins/ollama.ts" // Ajout du plugin Ollama
- ], 
+    "~/plugins/ollama.ts", // Ajout du plugin Ollama
+  ],
 
   // Gestion des variables d'environnement
   runtimeConfig: {
@@ -22,16 +22,26 @@ export default defineNuxtConfig({
 
   // Vite et configuration SCSS
   vite: {
-    plugins: [tailwindcss()], 
+    plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        '/video': '/public/video',  // Alias pour accéder aux vidéos dans le répertoire public
+      },
+    },
+    build: {
+      rollupOptions: {
+        external: ['/public/video/Video_violet.mp4'], // Externalisation du fichier vidéo
+      },
+    },
   },
 
-    router: {
-      options: {
-        strict: true
-      }
+  router: {
+    options: {
+      strict: true,
     },
-    experimental: {
-      payloadExtraction: false
-    }
+  },
 
+  experimental: {
+    payloadExtraction: false,
+  },
 });
