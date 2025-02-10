@@ -28,11 +28,12 @@
       <div class="absolute right-0 top-0 h-full w-full sm:w-[50%] flex items-center px-6 sm:px-10">
         <div class="max-w-3xl">
           <h1 class="home-title text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-6">
-            Maximizing Profits through Strategic Market Coverage
-          </h1>
-          <p class="home-description text-xs sm:text-sm md:text-base lg:text-lg text-white/90 mb-8">
-            Explore advanced strategies to optimize your market positioning and enhance returns. Explore advanced strategies to optimize your market positioning and enhance returns. Explore advanced strategies to optimize your market positioning and enhance returns. Explore advanced strategies to optimize your market positioning and enhance returns. Explore advanced strategies to optimize your market positioning and enhance returns.
-          </p>
+  Renforcez Votre Sécurité Numérique avec des Stratégies Efficaces
+</h1>
+<p class="home-description text-xs sm:text-sm md:text-base lg:text-lg text-white/90 mb-8">
+  À une époque où les cybermenaces sont omniprésentes, il devient crucial de prendre des mesures concrètes pour protéger vos informations personnelles et professionnelles. CyberGuard AI vous offre des stratégies avancées et des solutions adaptées pour vous aider à naviguer en toute sécurité dans l'univers numérique. Apprenez à identifier les risques potentiels, à mettre en place des pratiques de sécurité robustes, et à comprendre les attaques les plus courantes. Grâce à une approche interactive et ludique, notre plateforme vous accompagne pour renforcer vos défenses, sécuriser vos données sensibles et réduire votre exposition aux dangers de l'internet.
+</p>
+
         </div>
       </div>
     </section>

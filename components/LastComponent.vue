@@ -30,47 +30,47 @@
         <div class="text-center max-w-2xl mx-auto">
         
   
-          <!-- Titre -->
-          <h1 
-            ref="title"
-            class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 
-                   tracking-wide opacity-0"
-          >
-            Join our Community
-          </h1>
-          
-          <!-- Sous-titre -->
-          <p 
-            ref="subtitle"
-            class="text-base sm:text-lg text-gray-300 mb-8 opacity-0
-                   max-w-xl mx-auto"
-          >
-            Grow the community with the Edenomyshlins. Participate in
-            challenges and contests.
-          </p>
-  
-          <!-- Boutons -->
-          <div 
-            ref="buttons"
-            class="flex flex-col sm:flex-row gap-4 justify-center opacity-0"
-          >
-            <a 
-              href="#" 
-              class="px-8 py-2 bg-black/60 text-white rounded-full
-                     border border-blue-500/30 hover:bg-black/80
-                     transition duration-300 backdrop-blur-sm"
-            >
-              Telegram
-            </a>
-            <a 
-              href="#" 
-              class="px-8 py-2 bg-black/60 text-white rounded-full
-                     border border-blue-500/30 hover:bg-black/80
-                     transition duration-300 backdrop-blur-sm"
-            >
-              X / Twitter
-            </a>
-          </div>
+<!-- Titre -->
+<h1 
+  ref="title"
+  class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 
+         tracking-wide opacity-0 transition-opacity duration-1000 ease-out"
+>
+  Testez CyberGuard AI
+</h1>
+
+<!-- Sous-titre -->
+<p 
+  ref="subtitle"
+  class="text-base sm:text-lg text-gray-300 mb-8 opacity-0 
+         max-w-xl mx-auto transition-opacity duration-1000 ease-out"
+>
+  Soyez acteur de votre sécurité numérique ! Découvrez une manière ludique et interactive de protéger vos données et de devenir un expert en cybersécurité grâce à notre assistant IA.
+</p>
+
+<!-- Boutons -->
+<div 
+  ref="buttons"
+  class="flex flex-col sm:flex-row gap-4 justify-center opacity-0 transition-opacity duration-1000 ease-out"
+>
+  <a 
+    href="#apprenez" 
+    class="px-8 py-2 bg-black/60 text-white rounded-full
+           border border-blue-500/30 hover:bg-black/80
+           transition duration-300 backdrop-blur-sm"
+  >
+    CYBERGUARD AI
+  </a>
+  <a 
+    href="#simulateur" 
+    class="px-8 py-2 bg-black/60 text-white rounded-full
+           border border-blue-500/30 hover:bg-black/80
+           transition duration-300 backdrop-blur-sm"
+  >
+    Lancez le Simulateur de Menaces
+  </a>
+</div>
+
         </div>
       </div>
     </section>

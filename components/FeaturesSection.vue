@@ -36,28 +36,31 @@ interface Feature {
 }
 
 const features = ref<Feature[]>([
+  
   {
     id: 1,
-    title: "Navigating Risks",
-    description: "Understand and mitigate potential risks in your blockchain operations with our advanced security measures.",
+    title: "Maîtriser les Risques",
+    description: "Identifiez et atténuez les cybermenaces grâce à des stratégies de protection avancées.",
     mediaUrl: "/3d/gif_3D_1.gif",
     mediaType: 'gif'
   },
   {
     id: 2,
-    title: "What is High-Frequency Trading?",
-    description: "Explore the world of high-frequency trading and how our platform can help you succeed.",
+    title: "Qu'est-ce qu'une Cyberattaque ?",
+    description: "Explorez les différentes formes d’attaques numériques et apprenez à vous en défendre efficacement.",
     mediaUrl: "/3d/gif_3D_2.gif",
     mediaType: 'gif'
   },
   {
     id: 3,
-    title: "Profit with Prudence",
-    description: "Learn how to maximize your returns while maintaining a prudent approach to blockchain trading.",
+    title: "Sécurité Numérique Responsable",
+    description: "Optimisez votre protection en ligne tout en adoptant des pratiques cybersécurisées.",
     mediaUrl: "/3d/gif_3D_3.gif",
     mediaType: 'gif',
     customClass: 'zoom-gif' // Classe personnalisée pour le zoom
   }
+
+
 ]);
 
 onMounted(() => {

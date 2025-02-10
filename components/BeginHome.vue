@@ -49,12 +49,12 @@
     <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12">
       <div class="max-w-xs sm:max-w-sm text-center sm:text-left mx-auto sm:mx-0 xl:ml-8">
         <h1 ref="title" class="home-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-4 sm:mb-6">
-          CYBERGUARD
-        </h1>
-        <p ref="description" class="home-description text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8">
-          Secure, scalable access to computing resources
-          via blockchain for research and development.
-        </p>
+  CYBERGUARD
+</h1>
+<p ref="description" class="home-description text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8">
+  Apprenez les meilleures pratiques en cybersécurité grâce à notre IA intégrée expert en cybersécurité.
+</p>
+
         <div>
           <NuxtLink
             ref="button"

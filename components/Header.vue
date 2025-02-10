@@ -30,9 +30,7 @@ const menuItems = [
 
       <!-- Boutons Desktop -->
       <div class="hidden lg:flex items-center space-x-4">
-        <NuxtLink to="/stake" class="text-white/80 hover:text-white transition-colors">
-          Stake
-        </NuxtLink>
+
         <NuxtLink 
           v-if="!user"
           to="/connexion" 
