@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* Ajoutez ceci dans votre fichier CSS global ou dans un style scoped */
+spline-viewer::part(logo) {
+    display: none;
+  }
