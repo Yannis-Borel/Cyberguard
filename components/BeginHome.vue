@@ -7,12 +7,11 @@
       muted 
       playsinline
       class="video-background absolute top-0 object-cover h-full
-             sm:-right-[-5%] sm:w-[10%]   <!-- Augmenté pour sm -->
-             md:-right-[-10%] md:w-[85%]   <!-- Augmenté pour md -->
-             lg:-right-[5%] lg:w-[85%]   <!-- Augmenté pour lg -->
-             xl:-right-[5%] xl:w-[85%]   <!-- Augmenté pour xl -->
-             2xl:-right-[-5%] 2xl:w-[80%] <!-- Référence 2xl inchangée -->
-      "
+             sm:-right-5 sm:w-[10%] 
+             md:-right-10 md:w-[85%] 
+             lg:-right-5 lg:w-[85%] 
+             xl:-right-5 xl:w-[85%] 
+             2xl:-right-5 2xl:w-[80%]"
     >
       <source :src="videoUrl" type="video/mp4" />
     </video>
@@ -49,11 +48,11 @@
     <div class="relative z-10 container mx-auto h-full flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12">
       <div class="max-w-xs sm:max-w-sm text-center sm:text-left mx-auto sm:mx-0 xl:ml-8">
         <h1 ref="title" class="home-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-4 sm:mb-6">
-  CYBERGUARD
-</h1>
-<p ref="description" class="home-description text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8">
-  Apprenez les meilleures pratiques en cybersécurité grâce à notre IA intégrée expert en cybersécurité.
-</p>
+          CYBERGUARD
+        </h1>
+        <p ref="description" class="home-description text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8">
+          Apprenez les meilleures pratiques en cybersécurité grâce à notre IA intégrée expert en cybersécurité.
+        </p>
 
         <div>
           <NuxtLink
