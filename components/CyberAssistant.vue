@@ -173,6 +173,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Conversation, Message } from '~/types/supabase'
+import { watch } from 'vue'
 
 const { $ollama } = useNuxtApp()
 const {
@@ -186,7 +187,7 @@ const {
 const userInput = ref('')
 const isLoading = ref(false)
 const isSidebarOpen = ref(window?.innerWidth >= 768)
-import { watch } from 'vue'
+
 
 // Dans le setup script
 const { $supabase } = useNuxtApp()
@@ -349,7 +350,9 @@ const formatResponse = (response: string): string => {
 }
 
 const generateAIResponse = async (question: string): Promise<string> => {
-  const contextPrompt = `Tu es un expert français en cybersécurité. 
+  const contextPrompt = `Tu es un expert français en cybersécurité.
+    Tu dois UNIQUEMENT répondre aux questions liées à la cybersécurité. 
+    Si la question n'est pas liée à la cybersécurité, réponds simplement que tu ne peux pas répondre à cette question et RIEN DE PLUS et en FRANCAIS et .
   Réponds de manière claire, concise et technique à cette question: "${question}"
   
   Directives:
