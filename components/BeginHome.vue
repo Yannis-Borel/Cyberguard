@@ -13,7 +13,7 @@
              xl:-right-5 xl:w-[85%] 
              2xl:-right-5 2xl:w-[80%]"
     >
-      <source src="/video/Video_violet.mp4" type="video/mp4" />
+    <source src="/video/Video_violet.mp4" type="video/mp4" />
     </video>
 
     <!-- Dégradé optimisé -->
