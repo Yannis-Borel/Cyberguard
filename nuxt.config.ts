@@ -23,6 +23,11 @@ export default defineNuxtConfig({
   // Configuration de Vite
   vite: {
     plugins: [tailwindcss()], // Plugin Tailwind pour Vite
+    build: {
+      rollupOptions: {
+        external: ['/video/Video_violet.mp4'], // Ignorer le fichier vidéo
+      },
+    },
   },
 
   // Configuration de Nitro
