@@ -77,7 +77,7 @@ onMounted(() => {
         start: 'top bottom-=100',
         end: 'top center',
         toggleActions: 'play none none reverse',
-        markers: true // Retirez en production
+        markers: false // Retirez en production
       }
     });
   });

@@ -434,3 +434,10 @@ onMounted(async () => {
   })
 })
 </script>
+
+<style scoped>
+.pin-spacer {
+  height: 0!important;
+  padding: 0!important;
+}
+</style>
