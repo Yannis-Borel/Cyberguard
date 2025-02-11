@@ -1,0 +1,6 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[context.production.environment]
+  OLLAMA_URL = "https://7987-78-245-97-231.ngrok-free.app"

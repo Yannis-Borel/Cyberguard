@@ -1,18 +1,11 @@
 export default defineNuxtPlugin(() => {
-  const config = useRuntimeConfig()
-  
-  const fetchOllamaResponse = async (prompt: string) => {
-    // L'URL de base sera différente en production et en développement
-    const baseUrl = process.env.NODE_ENV === 'development' 
-      ? 'http://localhost:11434'
-      : 'https://7987-78-245-97-231.ngrok-free.app'
+  const { public: { ollamaUrl } } = useRuntimeConfig()
 
+  const fetchOllamaResponse = async (prompt: string) => {
     try {
-      const response = await fetch(`${baseUrl}/api/generate`, {
+      const response = await fetch(`${ollamaUrl}/api/generate`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'llama2',
           prompt: prompt,
@@ -20,19 +13,14 @@ export default defineNuxtPlugin(() => {
         })
       })
       
-      const data = await response.json()
-      return data.response
+      return await response.json()
     } catch (error) {
       console.error('Ollama error:', error)
-      return null
+      return { response: "Service temporairement indisponible" }
     }
   }
 
   return {
-    provide: {
-      ollama: {
-        generateResponse: fetchOllamaResponse
-      }
-    }
+    provide: { ollama: { generateResponse: fetchOllamaResponse } }
   }
 })

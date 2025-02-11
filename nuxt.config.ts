@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     public: {
       supabaseUrl: process.env.SUPABASE_URL || "",  
       supabaseKey: process.env.SUPABASE_KEY || "",  
+       ollamaUrl: process.env.OLLAMA_URL || 'http://localhost:11434'
     },
   },
 
