@@ -5,7 +5,7 @@ export default defineNuxtPlugin(() => {
     // L'URL de base sera différente en production et en développement
     const baseUrl = process.env.NODE_ENV === 'development' 
       ? 'http://localhost:11434'
-      : 'https://b149-78-245-97-231.ngrok-free.app'
+      : 'https://7987-78-245-97-231.ngrok-free.app'
 
     try {
       const response = await fetch(`${baseUrl}/api/generate`, {
