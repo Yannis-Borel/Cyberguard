@@ -26,6 +26,13 @@ const menuItems = [
         <NuxtLink to="/CyberGuardAI" class="text-white/80 hover:text-white transition-colors">
           CyberGuard AI
         </NuxtLink>
+        <NuxtLink to="/security-games" class="text-white/80 hover:text-white transition-colors">
+          Mini-Jeux 
+        </NuxtLink>
+        <NuxtLink to="/cyber-news" class="text-white/80 hover:text-white transition-colors">
+          Actualités
+        </NuxtLink>
+      
       </div>
 
       <!-- Boutons Desktop -->

@@ -53,22 +53,16 @@
   ref="buttons"
   class="flex flex-col sm:flex-row gap-4 justify-center opacity-0 transition-opacity duration-1000 ease-out"
 >
-  <a 
-    href="#apprenez" 
+  <NuxtLink  
+    to="/CyberGuardAI"
+
     class="px-8 py-2 bg-black/60 text-white rounded-full
            border border-blue-500/30 hover:bg-black/80
            transition duration-300 backdrop-blur-sm"
   >
-    CYBERGUARD AI
-  </a>
-  <a 
-    href="#simulateur" 
-    class="px-8 py-2 bg-black/60 text-white rounded-full
-           border border-blue-500/30 hover:bg-black/80
-           transition duration-300 backdrop-blur-sm"
-  >
-    Lancez le Simulateur de Menaces
-  </a>
+    TESTEZ NOTRE IA
+  </NuxtLink  >
+
 </div>
 
         </div>
@@ -79,6 +73,7 @@
   <script setup>
   import { onMounted, ref } from 'vue';
   import gsap from 'gsap';
+import { NuxtLink } from '#components';
   
   const logo = ref(null);
   const title = ref(null);

@@ -63,7 +63,7 @@
                    text-sm sm:text-base"
             to="/CyberGuardAI"
           >
-            CyberGuard AI
+            Testez notre IA
           </NuxtLink>
         </div>
       </div>

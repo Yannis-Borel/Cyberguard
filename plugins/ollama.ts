@@ -1,26 +1,32 @@
+// plugins/ollama.ts
 export default defineNuxtPlugin(() => {
-  const { public: { ollamaUrl } } = useRuntimeConfig()
-
-  const fetchOllamaResponse = async (prompt: string) => {
-    try {
-      const response = await fetch(`${ollamaUrl}/api/generate`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'llama2',
-          prompt: prompt,
-          stream: false
+    const fetchOllamaResponse = async (prompt: string) => {
+      try {
+        const response = await fetch('http://localhost:11434/api/generate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: 'llama2',
+            prompt: prompt,
+            stream: false
+          })
         })
-      })
-      
-      return await response.json()
-    } catch (error) {
-      console.error('Ollama error:', error)
-      return { response: "Service temporairement indisponible" }
+        
+        const data = await response.json()
+        return data.response
+      } catch (error) {
+        console.error('Ollama error:', error)
+        return null
+      }
     }
-  }
-
-  return {
-    provide: { ollama: { generateResponse: fetchOllamaResponse } }
-  }
-})
+  
+    return {
+      provide: {
+        ollama: {
+          generateResponse: fetchOllamaResponse
+        }
+      }
+    }
+  })
