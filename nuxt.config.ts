@@ -14,6 +14,7 @@ export default defineNuxtConfig({
 
   // Gestion des variables d'environnement
   runtimeConfig: {
+    newsApiKey: process.env.NEWSAPI_KEY,
     public: {
       supabaseUrl: process.env.SUPABASE_URL || "",  
       supabaseKey: process.env.SUPABASE_KEY || "",  

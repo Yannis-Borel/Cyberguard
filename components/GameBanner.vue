@@ -20,11 +20,11 @@
           <span class="text-purple-400 text-sm uppercase tracking-wider font-medium">Mini-jeu</span>
         </div>
         
-        <h3 class="text-3xl md:text-4xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300 mb-4">
+        <h3 class="text-2xl sm:text-xl md:text-4xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300 mb-4">
           {{ title }}
         </h3>
         
-        <p class="text-zinc-300 text-lg md:text-xl max-w-2xl transition-colors duration-300 mb-6">
+        <p class="text-zinc-300 text-base sm:text-md md:text-xl max-w-2xl transition-colors duration-300 mb-6">
           {{ description }}
         </p>
         
