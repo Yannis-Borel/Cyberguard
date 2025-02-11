@@ -35,14 +35,16 @@ export default defineNuxtConfig({
     },
   },
 
+
   nitro: {
     publicAssets: [
       {
-        dir: 'public',
-        baseURL: '/',
+        baseURL: '/video',
+        dir: 'static/video',
       },
     ],
   },
+
 
 
   router: {
