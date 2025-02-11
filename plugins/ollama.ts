@@ -1,44 +1,24 @@
+// plugins/ollama.ts
 export default defineNuxtPlugin(() => {
   const fetchOllamaResponse = async (prompt: string) => {
     try {
-      console.log('Sending request to Ollama...');
-      
-      // Déterminer l'URL de l'API en fonction de l'environnement
-      const apiUrl = process.dev 
-        ? 'http://193.168.146.163/api/generate'  // Development
-        : 'https://193.168.146.163/api/generate'; // Production
-      
-      const response = await fetch(apiUrl, {
+      const response = await fetch('http://localhost:11434/api/generate', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: 'tinyllama',
+          model: 'llama2',
           prompt: prompt,
           stream: false
-        }),
-        mode: 'cors',
-        credentials: 'omit'
-      });
+        })
+      })
       
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Response not OK:', {
-          status: response.status,
-          statusText: response.statusText,
-          errorText
-        });
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      console.log('Received response:', data);
-      return data.response;
+      const data = await response.json()
+      return data.response
     } catch (error) {
-      console.error('Ollama error:', error);
-      throw error;
+      console.error('Ollama error:', error)
+      return null
     }
   }
 
