@@ -96,7 +96,7 @@ const signUp = async () => {
 
     <!-- Conteneur principal -->
     <div class="flex-1 flex flex-col justify-center items-center p-8 bg-gray-900/95 backdrop-blur-sm">
-      <div class="w-full max-w-md space-y-8">
+      <div class="w-full max-w-md">
         <!-- En-tête -->
         <div class="text-center">
           <h1 class="text-4xl font-bold text-white mb-2">Bienvenue</h1>
@@ -104,16 +104,16 @@ const signUp = async () => {
         </div>
 
         <!-- Affichage des erreurs -->
-        <div v-if="errorMessage" class="bg-red-500/20 p-4 rounded-lg text-red-400 text-sm">
+        <div v-if="errorMessage" class="bg-red-500/20 p-4 rounded-lg text-red-400 text-sm mt-8">
           {{ errorMessage }}
         </div>
 
         <!-- Navigation par onglets -->
-        <div class="flex space-x-4 justify-center">
+        <div class="flex justify-center mt-8">
           <button 
             @click="showLogin = true"
             :class="[
-              'px-6 py-2 rounded-full font-medium transition-all',
+              'px-6 py-2 rounded-full font-medium transition-all mr-4',
               showLogin 
                 ? 'bg-blue-600 text-white shadow-lg'
                 : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
@@ -135,8 +135,8 @@ const signUp = async () => {
         </div>
 
         <!-- Formulaire de Connexion -->
-        <div v-if="showLogin" class="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-700/50">
-          <form @submit.prevent="signIn" class="space-y-6">
+        <div v-if="showLogin" class="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-700/50 mt-8">
+          <form @submit.prevent="signIn">
             <div>
               <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
               <input
@@ -148,7 +148,7 @@ const signUp = async () => {
               />
             </div>
             
-            <div>
+            <div class="mt-6">
               <label class="block text-sm font-medium text-gray-300 mb-2">Mot de passe</label>
               <input
                 type="password"
@@ -161,7 +161,7 @@ const signUp = async () => {
 
             <button
               type="submit"
-              class="w-full bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium py-3 rounded-lg transition-all duration-200 shadow-lg hover:shadow-blue-500/20"
+              class="w-full bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium py-3 rounded-lg transition-all duration-200 shadow-lg hover:shadow-blue-500/20 mt-6"
             >
               Se connecter →
             </button>
@@ -169,8 +169,8 @@ const signUp = async () => {
         </div>
 
         <!-- Formulaire d'Inscription -->
-        <div v-else class="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-700/50">
-          <form @submit.prevent="signUp" class="space-y-6">
+        <div v-else class="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-700/50 mt-8">
+          <form @submit.prevent="signUp">
             <div>
               <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
               <input
@@ -182,7 +182,7 @@ const signUp = async () => {
               />
             </div>
 
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-4 mt-6">
               <div>
                 <label class="block text-sm font-medium text-gray-300 mb-2">Prénom</label>
                 <input
@@ -206,7 +206,7 @@ const signUp = async () => {
               </div>
             </div>
 
-            <div>
+            <div class="mt-6">
               <label class="block text-sm font-medium text-gray-300 mb-2">Mot de passe</label>
               <input
                 type="password"
@@ -219,7 +219,7 @@ const signUp = async () => {
 
             <button
               type="submit"
-              class="w-full bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium py-3 rounded-lg transition-all duration-200 shadow-lg hover:shadow-blue-500/20"
+              class="w-full bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium py-3 rounded-lg transition-all duration-200 shadow-lg hover:shadow-blue-500/20 mt-6"
             >
               Créer un compte →
             </button>

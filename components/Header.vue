@@ -15,7 +15,7 @@ const menuItems = [
 </script>
 
 <template>
-  <header class="fixed w-full top-0 z-50 bg-gradient-to-b from-black/90 to-black/70 backdrop-blur-lg">
+  <header class="fixed w-full top-0 z-50 bg-gradient-to-b from-black/90 to-black/0 backdrop-blur-lg">
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
       <!-- Logo -->
       <NuxtLink to="/" class="flex items-center shrink-0">
@@ -23,12 +23,12 @@ const menuItems = [
       </NuxtLink>
 
       <!-- Menu Desktop -->
-      <div class="hidden lg:flex items-center space-x-12">
+      <div class="hidden lg:flex items-center ">
         <NuxtLink 
           v-for="item in menuItems.slice(0, 3)" 
           :key="item.path" 
           :to="item.path" 
-          class="text-white/80 hover:text-white transition-colors duration-300 text-base font-medium tracking-wide"
+          class="text-white/80 hover:text-white transition-colors duration-300 text-base font-medium tracking-wide mx-8"
         >
           {{ item.label }}
         </NuxtLink>
