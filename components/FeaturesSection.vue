@@ -3,7 +3,7 @@
   <section class="min-h-screen bg-black py-10 relative flex items-center justify-center">
     <ParticlesBackground />
     
-    <div class="container mx-auto px-6 relative z-10 w-[95%]">
+    <div class="container mx-auto px-6 relative z-10 w-full">
       <div 
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto"
         ref="cardsContainer"

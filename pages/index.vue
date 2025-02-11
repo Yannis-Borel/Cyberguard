@@ -229,7 +229,9 @@ onMounted(() => {
 .scroll-container {
   min-height: 100vh;
   height: auto;
-  overflow: visible;
+  overflow-y: visible;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .home-section {

@@ -16,7 +16,7 @@ const menuItems = [
 
 <template>
   <header class="fixed w-full top-0 z-50 bg-gradient-to-b from-black/90 to-black/0 backdrop-blur-lg">
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <nav class="w-full px-6 py-4 flex justify-between items-center"> <!-- Retiré container mx-auto -->
       <!-- Logo -->
       <NuxtLink to="/" class="flex items-center shrink-0">
         <img src="@/assets/image/Logo_cyberguard.svg" alt="Logo" class="h-8 sm:h-10 md:h-12" />

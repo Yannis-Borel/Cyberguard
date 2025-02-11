@@ -35,4 +35,13 @@ const isFirstRender = ref(true);
   height: 0 !important;
   padding: 0 !important;
 }
+
+::-webkit-scrollbar {
+  width: 5px; /* Plus large */
+}
+
+::-webkit-scrollbar:horizontal {
+  display: none;
+}
+
 </style>
