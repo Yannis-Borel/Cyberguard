@@ -20,29 +20,32 @@ export default defineNuxtConfig({
     },
   },
 
-  // Configuration de Vite
+  // Vite et configuration SCSS
   vite: {
-    plugins: [tailwindcss()], // Plugin Tailwind pour Vite
+    plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        '/video': '/public/video',  // Alias pour accéder aux vidéos dans le répertoire public
+      },
+    },
     build: {
       rollupOptions: {
-        external: ['/video/Video_violet.mp4'], // Ignorer le fichier vidéo
+        external: ['/public/video/Video_violet.mp4'], // Externalisation du fichier vidéo
       },
     },
   },
 
-  // Configuration de Nitro
-  nitro: {
-    serveStatic: true, // Active la gestion des fichiers statiques
-  },
 
-  // Configuration du routeur
+ 
+
+
+
   router: {
     options: {
       strict: true,
     },
   },
 
-  // Options expérimentales
   experimental: {
     payloadExtraction: false,
   },
