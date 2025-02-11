@@ -36,7 +36,7 @@
   class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 
          tracking-wide opacity-0 transition-opacity duration-1000 ease-out"
 >
-  Testez CyberGuard AI
+  Testez nos mini-jeux
 </h1>
 
 <!-- Sous-titre -->
@@ -45,7 +45,7 @@
   class="text-base sm:text-lg text-gray-300 mb-8 opacity-0 
          max-w-xl mx-auto transition-opacity duration-1000 ease-out"
 >
-  Soyez acteur de votre sécurité numérique ! Découvrez une manière ludique et interactive de protéger vos données et de devenir un expert en cybersécurité grâce à notre assistant IA.
+Mettez vos compétences à l’épreuve avec nos mini-jeux ! Testez la solidité de vos mots de passe et mesurez vos connaissances en cybersécurité grâce à notre quizz. Prêt à relever le défi ?
 </p>
 
 <!-- Boutons -->
@@ -54,13 +54,13 @@
   class="flex flex-col sm:flex-row gap-4 justify-center opacity-0 transition-opacity duration-1000 ease-out"
 >
   <NuxtLink  
-    to="/CyberGuardAI"
+    to="/security-games"
 
     class="px-8 py-2 bg-black/60 text-white rounded-full
            border border-blue-500/30 hover:bg-black/80
            transition duration-300 backdrop-blur-sm"
   >
-    TESTEZ NOTRE IA
+    Jouer
   </NuxtLink  >
 
 </div>
